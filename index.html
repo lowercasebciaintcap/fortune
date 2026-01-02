@@ -9,7 +9,8 @@
     background: linear-gradient(135deg, #ffe6f2, #ffd1e8);
     font-family: 'Comic Sans MS', cursive, sans-serif;
     text-align: center;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     color: #c2185b;
     transition: background 1s ease;
   }
@@ -27,7 +28,7 @@
 
   .cookie-container {
     position: relative;
-    margin-top: 80px;
+    margin-top: 60px;
     cursor: pointer;
   }
 
@@ -81,7 +82,7 @@
 
   .fortune {
     display: none;
-    margin: 40px auto;
+    margin: 20px auto 60px;
     width: 80%;
     background: #fff0f8;
     padding: 30px;
@@ -98,13 +99,13 @@
   .kiss {
     display: none;
     font-size: 4em;
-    margin-top: 20px;
+    margin-top: 10px;
     animation: pop 1s ease forwards;
   }
 
   .replay {
     display: none;
-    margin-top: 30px;
+    margin: 30px auto 60px;
     padding: 10px 25px;
     font-size: 1.1em;
     border-radius: 20px;
@@ -130,6 +131,7 @@
     position: fixed;
     font-size: 1.2em;
     animation: fall 2s linear forwards;
+    pointer-events: none;
   }
 
   @keyframes fall {
@@ -188,6 +190,8 @@ cookie.addEventListener("click", () => {
   document.body.classList.add("glitter");
 
   fortune.style.display = "block";
+  fortune.scrollIntoView({ behavior: "smooth", block: "center" });
+
   kiss.style.display = "block";
   replay.style.display = "inline-block";
 
@@ -198,7 +202,6 @@ cookie.addEventListener("click", () => {
     confetti.style.left = Math.random() * 100 + "vw";
     confetti.style.top = "20vh";
     document.body.appendChild(confetti);
-
     setTimeout(() => confetti.remove(), 2000);
   }
 });
