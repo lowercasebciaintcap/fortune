@@ -124,33 +124,45 @@
 <div class="fortune" id="fortune">
   <h2>For Hassan 💖</h2>
   <p>
-    Inshallah our future leads us to a lifetime of happiness and shared dreams.
+    Inshallah we have lifetime of happiness forever.
     <br><br>
     I hope we get to spend every moment and grow old together.
     <br><br>
     I’m so happy I met you and that you’re a part of my life.
     <br><br>
-    I’m excited to spend every day with you and Inshallah we get married. 💕
+    I’m excited to spend the rest of my life with you and Inshallah we get married. 💕
   </p>
 </div>
 
 <button class="replay" id="replay">Replay 💗</button>
 
+<!-- Crack sound -->
 <audio id="crackSound">
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2b2d5fcd91.mp3" type="audio/mpeg">
 </audio>
+
+<!-- Background music -->
+<audio id="bgMusic" src="tf.mp3" loop muted></audio>
 
 <script>
 const cookie = document.getElementById("cookie");
 const fortune = document.getElementById("fortune");
 const replay = document.getElementById("replay");
 const sound = document.getElementById("crackSound");
+const bgMusic = document.getElementById("bgMusic");
 
 let opened = false;
+
+/* try to autoplay (allowed because muted) */
+bgMusic.play().catch(() => {});
 
 cookie.addEventListener("click", () => {
   if (opened) return;
   opened = true;
+
+  /* unmute + ensure music plays */
+  bgMusic.muted = false;
+  bgMusic.play();
 
   sound.play();
   cookie.classList.add("cracked");
